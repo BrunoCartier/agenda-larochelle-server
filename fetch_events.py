@@ -2,8 +2,10 @@
 
 import json
 import re
+
 from urllib import request
 from datetime import date
+from time import time
 
 JSON_URL = 'http://www.opendata.larochelle.fr/' \
            'telechargement/json/F_jeunesse_sport_et_culture/' \
@@ -47,7 +49,9 @@ def fetch_and_write():
         return
 
     ugly_dict = json.loads(raw_json)['data']
-    pretty_dict = {}
+    pretty_dict = {
+        'timestamp': int(time())
+    }
 
     for e in ugly_dict:
         out = {
