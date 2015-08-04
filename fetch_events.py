@@ -71,9 +71,11 @@ def fetch_and_write():
         pretty_dict[int(e['id'])] = out
 
     # Debug
-    print(json.dumps(pretty_dict, indent=4))
-    # print(json.dumps(pretty_dict))
+    # print(json.dumps(pretty_dict, indent=4))
     # print(raw_json)
+
+    with open('events.json', 'w') as json_file:
+        json_file.write(json.dumps(pretty_dict, indent=4))
 
 if __name__ == '__main__':
     fetch_and_write()
