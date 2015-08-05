@@ -28,6 +28,7 @@ def to_json_date(nonsense_string):
 
 def put_if_relevant(e, out_obj, french, english):
     if e.get(french) is not None and\
+            e[french] != '\n' and\
             len(e[french]) > 0:
         out_obj[english] = e[french]
 
