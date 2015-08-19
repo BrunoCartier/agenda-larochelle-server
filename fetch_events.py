@@ -5,7 +5,7 @@ import re
 
 from urllib import request
 from datetime import date
-from time import time
+from time import time, mktime
 
 JSON_URL = 'http://www.opendata.larochelle.fr/' \
            'telechargement/json/F_jeunesse_sport_et_culture/' \
@@ -61,6 +61,13 @@ def fetch_and_write():
             'date_start': to_json_date(e['date_debut']),
             'date_end': to_json_date(e['date_fin']),
         }
+
+        d = out['date_end'].split('-')
+        out['ts_end'] = int(mktime(date(
+            year=int(d[0]),
+            month=int(d[1]),
+            day=int(d[2]),
+        ).timetuple()))
 
         put_if_relevant(e, out, 'lieu', 'location')
         put_if_relevant(e, out, 'categorie', 'categories')
