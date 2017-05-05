@@ -7,9 +7,7 @@ from urllib import request
 from datetime import date
 from time import time, mktime
 
-JSON_URL = 'http://www.opendata.larochelle.fr/' \
-           'telechargement/json/F_jeunesse_sport_et_culture/' \
-           'agenda/agenda.json'
+JSON_URL = 'https://opendata.larochelle.fr/dataset/evenementiel-agenda-des-evenements/?download=1661'
 TRACKER_REGEX = r'onclick=&quot.{0,150}; &quot;'  # Ugly, please fix if possible
 
 
